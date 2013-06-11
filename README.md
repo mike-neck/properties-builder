@@ -1,11 +1,13 @@
 PropertiesBuilder
----
+===
+
+[![Build Status](https://secure.travis-ci.org/mike-neck/properties-builder.png?branch=master)](https://travis-ci.org/mike-neck/properties-builder)
 
 Properties-builder is an extension library for Grovy.
 This library enable you to write properties with groovy's builder style.
 
 Usage
-===
+---
 
 For example if you want to write properties for logback, you can write as bellow.
 
@@ -81,7 +83,7 @@ eclipseJdt {
 ```
 
 Install
-===
+---
 
 This library will be available via maven central repository.
 
@@ -106,7 +108,7 @@ dependencies {
 ```
 
 License
-===
+---
 
 This library is delivered under _APL2.0_.
 
@@ -127,12 +129,12 @@ This library is delivered under _APL2.0_.
 ```
 
 TODOs
-===
+---
 
 + creating a new level namespace on getting property from `PropertiesBuilder`
 
 Developer
-===
+---
 
 name : Shinya Mochida
 twitter : @mike_neck
