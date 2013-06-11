@@ -38,7 +38,7 @@ This advantage enables you to writer gradle build script in the case of creating
 
 On writing build script for Google App Engine with eclipse...
 
-```groovy build.gradle
+```groovy
 apply plugin : 'eclipse'
 
 buildscript {
