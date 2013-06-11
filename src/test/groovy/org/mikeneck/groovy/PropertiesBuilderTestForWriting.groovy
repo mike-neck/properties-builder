@@ -22,6 +22,8 @@ class PropertiesBuilderTestForWriting {
 
     def builder
 
+    def list = []
+
     @Before
     void writerTest () {
         builder = new PropertiesBuilder()
@@ -35,6 +37,11 @@ class PropertiesBuilderTestForWriting {
                 user 'mike-neck'
             }
         }
+
+        list << 'settings.lang=java'
+        list << 'settings.git-hub.repository.url=git@github.com:mike-neck/properties-builder.git'
+        list << 'settings.groovy.version=2.1.3'
+        list << 'settings.git-hub.user=mike-neck'
     }
 
     @Test
@@ -42,11 +49,17 @@ class PropertiesBuilderTestForWriting {
         def writer = new StringWriter()
         builder.write(writer)
         def properties = writer.toString()
-        def list = []
-        properties.eachLine {list << it}
-        assert list.contains('settings.lang=java')
-        assert list.contains('settings.git-hub.repository.url=git@github.com:mike-neck/properties-builder.git')
-        assert list.contains('settings.groovy.version=2.1.3')
-        assert list.contains('settings.git-hub.user=mike-neck')
+        def result = []
+        properties.eachLine {result << it}
+        result.each {
+            assert list.contains(it)
+        }
+    }
+
+    @Test
+    void toStringTest () {
+        builder.toString().eachLine {
+            assert list.contains(it)
+        }
     }
 }

@@ -4,6 +4,7 @@ import groovy.lang.GroovyRuntimeException;
 import groovy.util.BuilderSupport;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Enumeration;
 import java.util.Map;
@@ -108,5 +109,12 @@ public class PropertiesBuilder extends BuilderSupport {
             String k = baseName + "." + key.toString();
             properties.setProperty(k, v);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringWriter writer = new StringWriter();
+        write(writer);
+        return writer.toString();
     }
 }
