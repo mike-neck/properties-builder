@@ -25,7 +25,7 @@ builder.configuration {
 Properties properties = builder.toProperties();
 ```
 
-It looks like properties file written with Groovy with using `PropertiesSluper`.
+It looks like properties file written with Groovy with using `ConfigSlurper`.
 
 But with this library
 
