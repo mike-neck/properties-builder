@@ -1,7 +1,11 @@
 package org.mikeneck.groovy;
 
+import groovy.lang.GroovyRuntimeException;
 import groovy.util.BuilderSupport;
 
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Enumeration;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -40,6 +44,23 @@ public class PropertiesBuilder extends BuilderSupport {
     public PropertiesBuilder(Properties properties) {
         this.properties = properties;
         this.support = new PropertiesBuilderSupport();
+    }
+
+    public void write(Writer writer) {
+        try {
+            Enumeration<?> names = properties.propertyNames();
+            while (names.hasMoreElements()) {
+                String key = (String) names.nextElement();
+                String value = properties.getProperty(key);
+                writer.append(key)
+                        .append('=')
+                        .append(value)
+                        .append('\n');
+            }
+            writer.flush();
+        } catch (IOException e) {
+            throw new GroovyRuntimeException(e);
+        }
     }
 
     @Override
